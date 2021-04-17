@@ -1,17 +1,27 @@
 const data = [
  {
-   imagePath: "https://media1.giphy.com/media/WvhUy7yHCdJ6GztSE1/giphy.gif",
-   describe: "Happy Bianca Belair GIF By WWE"
+   id: 1,
+   imagePath: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTTbe8O_847vzxEbH1Zj2NmBbT0alZ1pKvPXJtmV4Ar5eDxzw2N1O5W41B9F_APwLObc27wBkStLJqNIywctzhHqV6oe9Fk259TixK2UfGIvDd-RA&usqp=CAY",
+   localization: [{ state: "SP", city: "campinas" }],
+   price: 12312,
+   describe: "Casa com lindo gramado, bem localizada. Com facil acesso a escolas, acadêmia e comercios em geral"
+
  },
 
  {
-  imagePath: "https://media3.giphy.com/media/0KePJMzvNBVKzNIHIK/giphy.gif?cid=ecf05e47nq6gg8vmcknk5lpl5s0206ne247302l8yk3zdeet&rid=giphy.gif",
-  describe: "Big E Reaction GIF By WWE"
+   id: 2,
+  imagePath: "https://resizedimgs.zapimoveis.com.br/crop/272x236/vr.images.sp/4c7e7b4643ca45c80c399c8f499d7b5a.jpg",
+  localization: [{ state: "RJ", city: "Copacabana" }],
+  price: 12312,
+  describe: "Apartamento com fácil acesso ao centro de Copacabana"
  },
 
 {
-  imagePath: "https://media2.giphy.com/media/JeZFw6gnSdan8jnzY2/giphy.gif?cid=ecf05e47wdgseu8i7sjiylsadzeptitc9hor7jvi90mh47y6&rid=giphy.gif",
-  describe: "Alexa Bliss Reaction GIF By WWE"
+  id: 3,
+  imagePath: "https://fotos.infoideias.net/midasweb/arquivos/1245/imoveis/fotos/231/img/231_G1545400966.jpg",
+  localization: [{ state: "BA", city: "Salvador" }],
+  price: 12312,
+  describe: "Linda casa, recém reformada. Boa usabilidade do espaço. Com fácil acesso a praia"
 },
 ];
 
