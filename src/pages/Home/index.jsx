@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import context from '../../context/context';
+import { dataRescuedFromLocalStorage as dataRescued } from '../../services';
 
 function Home() {
-  const { data } = useContext(context);
+  const data = dataRescued;
 
   return(
     <>

@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import context from './context';
+import context from './';
 import * as service from '../services'
 
 function Provider ({ children }) {
-  const [ data, setData] = useState([]); 
+  const [ dataEditable, setDataEditable ] = useState({}); 
+  const [ localData, setLocalData ] = useState([]); 
 
   useEffect(() => {
     service.setDataInLocalStorage();
   }, []);
 
   useEffect(() => {
-    service.rescueLocalStorageToProvider('dataCards', setData);
-  }, [data])
+    service.rescueLocalStorageToProvider('dataCards', setLocalData);
+  }, [])
 
   const value = {
-    data,
-    setData
+    dataEditable,
+    setDataEditable,
+    localData,
+    setLocalData
   }
   return(
     <context.Provider value={ value }>

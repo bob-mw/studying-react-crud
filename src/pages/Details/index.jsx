@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import context from  '../../context/context';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { dataRescuedFromLocalStorage as dataRescued } from '../../services';
 
 function Details(props) {
-    const { data } = useContext(context);
+   const data = dataRescued;
     const { id } = props.match.params;
 
     const renderSingleInformations = (data, id) => {
