@@ -1,17 +1,18 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { dataRescuedFromLocalStorage as dataRescued } from '../../services';
+import context from '../../context';
 
-function Home() {
-  const data = dataRescued;
+export default function Home() {
+
+  const { localData } = useContext(context);
 
   return(
     <>
      <h1>Home</h1>
       {
-      data.map((item, index) => (
+      localData.map((item, index) => (
           <section key={ index }>
-            <img src={ item.imagePath } alt="imovel-figure"/>
+            <img src={ item.imagePath } alt="imovel-figure" width="300"/>
             <p>{ item.describe }</p>
            <Link to={`/details/${item.id}`}>Detalhes</Link>
           </section>
@@ -20,5 +21,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

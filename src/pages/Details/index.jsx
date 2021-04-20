@@ -1,9 +1,9 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { dataRescuedFromLocalStorage as dataRescued } from '../../services';
+import context from '../../context';
 
-function Details(props) {
-   const data = dataRescued;
+export default function Details(props) {
+    const { localData } = useContext(context)
     const { id } = props.match.params;
 
     const renderSingleInformations = (data, id) => {
@@ -11,7 +11,7 @@ function Details(props) {
       const { imagePath, describe, localization } = singleInformation;
       return(
           <section>
-            <img src={ imagePath } alt="house"/>
+            <img src={ imagePath } alt="house" width="300" />
             {
               localization.map((local) => (
                 <table style={{"display": "flex"}}>
@@ -37,9 +37,7 @@ function Details(props) {
     }
 
     return(
-      renderSingleInformations(data, id )
+      renderSingleInformations(localData, id )
     );
 
 }
-
-export default Details;

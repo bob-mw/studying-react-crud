@@ -1,16 +1,23 @@
-import React, { useContext } from 'react';
-import { dataRescuedFromLocalStorage as dataRescued } from '../../services';
-import context from '../../context'
+import { useContext, useState } from 'react';
+import context from '../../context';
 
-function Register(props) {
-  const { dataEditable, setDataEditable } = useContext(context);
-  const data = dataRescued;
+export default function Register(props) {
+  const { localData, setLocalData } = useContext(context);
+
   const { id } = props.match.params;
 
-  const singleData = data.find((item) => item.id === Number(id));
+  const singleData = localData.find((item) => item.id === Number(id));
+  
+  const [dataEditable, setDataEditable] = useState({...singleData});
 
-  const handleChange = ({ target: { name, value } }) => { 
-      setDataEditable({ ...dataEditable, [name]: value })
+  const handleChange = ({ target: { name, value }}) => {
+    setDataEditable({...dataEditable, [name]: value})
+  }
+
+  const handleRegister = async () => {
+    const localDiffData = localData.filter((item) => item.id !== Number(dataEditable.id));
+    setLocalData([...localDiffData, dataEditable]);
+    localStorage.setItem('dataCards', JSON.stringify([...localDiffData, dataEditable]));
   }
 
   return(
@@ -18,20 +25,28 @@ function Register(props) {
     <fieldset>
       <label htmlFor="pictureInput">
           Imagem
-        <input type="text" id="pictureInput" name="imagePath" onChange={ handleChange } />
+        <input
+          type="text"
+          id="pictureInput"
+          name="imagePath"
+          onChange={ handleChange }
+        />
       </label>
       <label htmlFor="describe">
           Descrição
-        <textarea name="describe" id="describe" cols="30" rows="10"
-        onChange={ handleChange }>
-        { singleData.describe } 
+        <textarea
+          name="describe"
+          id="describe"
+          cols="30"
+          rows="10"
+          onChange={ handleChange }
+      >
+        { singleData.describe }
         </textarea>
       </label>
     </fieldset>
-    <button type="button">Registrar</button>
+    <button type="button" onClick={ handleRegister }>Registrar</button>
     <button type="button">Deletar</button>
    </form>
   );
 }
-
-export default Register;

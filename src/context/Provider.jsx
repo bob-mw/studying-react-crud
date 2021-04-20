@@ -3,7 +3,6 @@ import context from './';
 import * as service from '../services'
 
 function Provider ({ children }) {
-  const [ dataEditable, setDataEditable ] = useState({}); 
   const [ localData, setLocalData ] = useState([]); 
 
   useEffect(() => {
@@ -15,8 +14,6 @@ function Provider ({ children }) {
   }, [])
 
   const value = {
-    dataEditable,
-    setDataEditable,
     localData,
     setLocalData
   }
